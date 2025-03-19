@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
-const router = require('./router/auth-router')
-
+const router = require('./router/auth-router');
+const connectDb = require("./utils/db");
+app.use(express.json());
 app.use("/api/auth",router);
 
 // app.get("/",(req,res) =>{
@@ -13,6 +14,9 @@ app.use("/api/auth",router);
 // });
 
 const PORT = 5000;
-app.listen(PORT,()=>{
-    console.log(`Server is running at port : ${PORT}`);
-});
+connectDb().then(()=>{
+    console.log("Data Base connected promise");
+    app.listen(PORT,()=>{
+        console.log(`Server is running at port : ${PORT}`);
+    });
+})
