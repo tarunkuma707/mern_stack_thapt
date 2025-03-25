@@ -10,6 +10,7 @@ import Services from './pages/Services';
 import Login from './pages/Login';
 import { Register } from './pages/Register';
 import { Navbar } from "./components/Navbar";
+import { Error } from './pages/Error';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,6 +26,7 @@ function App() {
           <Route activeClassName='is-active' path="/services" element={<Services />} />
           <Route activeClassName='is-active' path="/login" element={<Login />} />
           <Route activeClassName='is-active' path="/register" element={<Register />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
     </>
